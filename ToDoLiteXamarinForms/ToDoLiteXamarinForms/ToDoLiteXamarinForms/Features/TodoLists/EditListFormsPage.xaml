@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="ToDoLiteXamarinForms.Features.TodoLists.EditListFormsPage">
+  
+  <ContentPage.ToolbarItems>
+    
+    <ToolbarItem
+      Text="Cancel"
+      Order="Primary"
+      Activated="OnButtonNavigateClicked" />
+    
+  </ContentPage.ToolbarItems>
+
+  <StackLayout>
+    
+    <Entry
+      x:Name="entryTitle"
+      Text="{Binding Title}" />
+
+    <Entry
+      x:Name="entryDetails"
+      Text="{Binding Details}" />
+
+    <Button
+      Text="Update"
+      Clicked="OnButtonCreateClicked" />
+
+  </StackLayout>
+  
+</ContentPage>

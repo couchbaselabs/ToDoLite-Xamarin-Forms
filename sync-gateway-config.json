@@ -1,0 +1,15 @@
+{
+    "interface": ":4984",
+    "adminInterface": ":4985",
+    "log": [ "CRUD", "CRUD+", "HTTP", "HTTP+", "Access", "Cache", "Shadow", "Shadow+", "Changes", "Changes+" ],
+    "databases": {
+        "sync_gateway": {
+            "server": "walrus:",
+            "users": {
+                "GUEST": { "disabled": true, "admin_channels": [ "*" ] },
+                "couchbase": { "admin_channels": [ "*" ], "password": "letmein"}
+            },
+            "sync": `function(doc){ channel(doc.channels); }`
+        }
+    }
+}

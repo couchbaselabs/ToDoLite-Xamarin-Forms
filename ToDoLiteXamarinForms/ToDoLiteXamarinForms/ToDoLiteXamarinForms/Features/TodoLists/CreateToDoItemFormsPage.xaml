@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="ToDoLiteXamarinForms.Features.TodoLists.CreateToDoItemFormsPage">
+  
+  <ContentPage.ToolbarItems>
+    
+    <ToolbarItem
+      Text="Cancel"
+      Order="Primary"
+      Activated="OnButtonNavigateClicked" />
+    
+  </ContentPage.ToolbarItems>
+
+  <StackLayout>
+    
+    <Entry
+      x:Name="entryDetails"
+      Placeholder="Details"
+      Text="{Binding Details}" />
+
+    <Switch 
+      Toggled="swithToggled"
+      IsToggled="{Binding Done}"
+      />
+    
+    <Button
+      Text="Add ToDo Item"
+      Clicked="OnButtonCreateClicked" />
+
+  </StackLayout>
+  
+</ContentPage>

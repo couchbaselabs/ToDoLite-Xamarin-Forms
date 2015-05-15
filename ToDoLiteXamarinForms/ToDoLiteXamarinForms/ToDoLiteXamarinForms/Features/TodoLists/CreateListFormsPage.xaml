@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="ToDoLiteXamarinForms.Features.TodoLists.CreateListFormsPage"
+  Title="Create new list">
+  
+  <ContentPage.ToolbarItems>
+    
+    <ToolbarItem
+      Text="Create new List"
+      Order="Primary"
+      Activated="OnButtonNavigateClicked" />
+    
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout>
+    
+    <Entry 
+      x:Name="entryId" 
+      Placeholder="Id (optional)" />
+    
+    <Entry 
+      x:Name="entryTitle" 
+      Placeholder="Titel" />
+    
+    <Entry 
+      x:Name="entryDetails" 
+      Placeholder="Details" />
+    
+    <Button 
+      Text="Create List" 
+      Clicked="OnButtonCreateClicked" />
+    
+  </StackLayout>
+  
+</ContentPage>

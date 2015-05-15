@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage 
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="ToDoLiteXamarinForms.Features.TodoLists.ToDoListDetailsFormsPage">
+
+  <!--
+  <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:ColorConverter x:Key="colorConvert" xmlns:local="clr-namespace:App2.Helpers;assemly=App2" />
+        </ResourceDictionary>
+  </ContentPage.Resources>
+  -->
+      
+  <ContentPage.ToolbarItems>
+    
+    <ToolbarItem
+      Text="Edit"
+      Order="Secondary"
+      Activated="OnButtonEditClicked"/>
+    
+    <ToolbarItem
+      Text="+"
+      Order="Primary"
+      Activated="OnButtonAddClicked"/>
+
+  </ContentPage.ToolbarItems>
+  
+  <StackLayout Padding="20,0,0,20">
+
+    <StackLayout Orientation="Horizontal">
+      
+      <Label
+        Text="Title: "
+        VerticalOptions="Center"
+        HorizontalOptions="Start" />
+
+      <Label
+        Text="{Binding Item.Title}"
+        VerticalOptions="Center"
+        HorizontalOptions="Start" />
+      
+    </StackLayout>
+
+    <StackLayout Orientation="Horizontal">
+
+      <Label
+        Text="Details: "
+        VerticalOptions="Center"
+        HorizontalOptions="Start" />
+
+      <Label
+        Text="{Binding Item.Details}"
+        VerticalOptions="Center"
+        HorizontalOptions="Start" />
+
+    </StackLayout>
+
+    <ListView
+      ItemTapped="OnItemTapped"
+      ItemsSource="{Binding Items}" >
+
+      <ListView.ItemTemplate>
+        <DataTemplate>
+          
+          <TextCell
+            Text="{Binding Details}"
+            Detail="{Binding Done}"
+            DetailColor="Black" />
+        
+        </DataTemplate>
+      </ListView.ItemTemplate>
+
+    </ListView>
+
+  </StackLayout>
+  
+</ContentPage>

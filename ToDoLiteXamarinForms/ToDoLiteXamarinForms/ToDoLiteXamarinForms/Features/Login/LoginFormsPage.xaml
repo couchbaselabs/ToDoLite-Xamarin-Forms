@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+  xmlns="http://xamarin.com/schemas/2014/forms"
+  xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+  x:Class="ToDoLiteXamarinForms.Features.Login.LoginFormsPage"
+  Title="Login">
+
+  <ContentPage.ToolbarItems>
+    
+    <ToolbarItem
+      Text="Login"
+      Order="Primary"
+      Activated="OnButtonNavigateNextClicked" />
+    
+  </ContentPage.ToolbarItems>
+
+  <StackLayout
+    Padding="20,50,20,0">
+
+    <Label
+      Text="Login Forms Page"
+      VerticalOptions="Center"
+      HorizontalOptions="Center" />
+
+    <Entry
+      x:Name="usernameEntry"
+      Text="couchbase"
+      Placeholder="Username" />
+
+    <Entry
+      x:Name="passwordEntry"
+      Text="letmein"
+      Placeholder="Password" />
+
+    <Label
+        Text="The username and password needs to be configured on the Sync Gateway that is used by this app to sync. Learn more at couchabse.com/mobile"
+        VerticalOptions="Start"
+        FontSize="18"
+        HorizontalOptions="Center" />
+
+  </StackLayout>
+
+</ContentPage>

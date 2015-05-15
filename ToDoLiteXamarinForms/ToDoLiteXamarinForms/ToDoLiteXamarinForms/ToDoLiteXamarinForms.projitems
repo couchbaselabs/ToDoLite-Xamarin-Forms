@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>af415abb-c21f-4c7e-a893-24076bdd15c9</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>ToDoLiteXamarinForms</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Auth\Authentication.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Login\LoginFormsPage.xaml.cs">
+      <DependentUpon>LoginFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\CreateListFormsPage.xaml.cs">
+      <DependentUpon>CreateListFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\CreateToDoItemFormsPage.xaml.cs">
+      <DependentUpon>CreateToDoItemFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\EditListFormsPage.xaml.cs">
+      <DependentUpon>EditListFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\EditToDoItemFormsPage.xaml.cs">
+      <DependentUpon>EditToDoItemFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\ToDoListDetailsFormsPage.xaml.cs">
+      <DependentUpon>ToDoListDetailsFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\TodoLists\TodoListsFormsPage.xaml.cs">
+      <DependentUpon>TodoListsFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Features\Welcome\WelcomeFormsPage.xaml.cs">
+      <DependentUpon>WelcomeFormsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Helpers\ExtensionMethods.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\ModelBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TodoItem.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Models\TodoList.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\StorageRepository.CRUD.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\StorageRepository.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\StorageRepository.Query.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\StorageRepository.Sync.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TodoDetailsViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ViewModelBase.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\Login\LoginFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\CreateListFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\CreateToDoItemFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\EditListFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\EditToDoItemFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\ToDoListDetailsFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\TodoLists\TodoListsFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="$(MSBuildThisFileDirectory)Features\Welcome\WelcomeFormsPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
