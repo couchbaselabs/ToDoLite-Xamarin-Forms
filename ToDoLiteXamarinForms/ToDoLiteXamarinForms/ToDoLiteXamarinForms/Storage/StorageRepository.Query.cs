@@ -4,6 +4,7 @@ using ToDoLiteXamarinForms.Models;
 using Couchbase.Lite;
 using ToDoLiteXamarinForms.Helpers;
 using System.Collections.ObjectModel;
+using System;
 
 namespace ToDoLiteXamarinForms.Storage
 {
@@ -27,7 +28,8 @@ namespace ToDoLiteXamarinForms.Storage
             .ToList()
             .ForEach(row =>
             {
-                ProcessDocument(row.Document);
+                throw new NotImplementedException("Call ProcessDocument with the document in the row");
+                // add core here->
             });
 
             var liveQuery = Manager.SharedInstance.GetDatabase(DatabaseName)

@@ -20,24 +20,35 @@ namespace ToDoLiteXamarinForms.Storage
 
             item.LastUpdated = DateTime.Now.Ticks.ToString();
 
-            Document document =
-                !string.IsNullOrWhiteSpace(item.Id) ?
-                document = Manager.SharedInstance.GetDatabase(DatabaseName)
-                    .GetDocument(item.Id) :
+            Document document = null;
+            if (string.IsNullOrWhiteSpace(item.Id))
+            {
                 document = Manager.SharedInstance.GetDatabase(DatabaseName)
                     .CreateDocument();
+            }
+            else
+            {
+                document = Manager.SharedInstance.GetDatabase(DatabaseName)
+                    .GetDocument(item.Id);
+            }
 
-            var updatedProperties =
-                document.Properties != null && document.Properties.Any() ?
-                new Dictionary<string, object>(document.Properties) :
-                new Dictionary<string, object>();
+            Dictionary<string, object> documentUserProperties = null;
+            if (document.Properties != null && document.Properties.Any())
+            {
+                documentUserProperties = new Dictionary<string, object>(document.Properties);
+            }
+            else
+            {
+                documentUserProperties = new Dictionary<string, object>();
+            }
 
-            updatedProperties["id"] = item.Id;
-            updatedProperties["lastupdated"] = item.LastUpdated;
-            updatedProperties["doctype"] = item.DocType;
-            updatedProperties["doc"] = item;
+            documentUserProperties["id"] = item.Id;
+            documentUserProperties["lastupdated"] = item.LastUpdated;
+            documentUserProperties["doctype"] = item.DocType;
+            documentUserProperties["doc"] = item;
 
-            document.PutProperties(updatedProperties);
+            throw new NotImplementedException("Save/put user properties document not implemented");
+            // add code here ->
 
             return item;
         }
@@ -47,9 +58,9 @@ namespace ToDoLiteXamarinForms.Storage
             var t = typeof(T).Name;
             string docId = id.Contains("::") ? id : typeof(T).Name.ToLower() + "::" + id;
 
-            Document document = Manager.SharedInstance
-                .GetDatabase(DatabaseName)
-                .GetDocument(docId);
+            Document document = null;
+            throw new NotImplementedException("Get document not implemented");
+            // Add code here ->
 
             if (document == null)
             {

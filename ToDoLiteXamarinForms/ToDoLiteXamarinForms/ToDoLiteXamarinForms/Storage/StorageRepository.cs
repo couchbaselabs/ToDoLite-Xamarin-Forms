@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using ToDoLiteXamarinForms.Models;
 using Couchbase.Lite;
+using System;
 
 namespace ToDoLiteXamarinForms.Storage
 {
@@ -23,15 +24,13 @@ namespace ToDoLiteXamarinForms.Storage
 
         public StorageRepository()
         {
-            Debug.WriteLine("CONSTRUCTOR!");
-
             TodoLists = new ObservableCollection<TodoList>();
             TodoItems = new Dictionary<string, ObservableCollection<TodoItem>>();
 
             ConflictItems = new ObservableCollection<Document>();
             ConflictItems.CollectionChanged += ConflictItems_CollectionChanged;
 
-            ResetDatabase();
+            //ResetDatabase();
             InitializeDatabase();
             InitializeQuery();
 
@@ -64,8 +63,8 @@ namespace ToDoLiteXamarinForms.Storage
                     
                     foreach(var id in ids)
                     {
-                        ProcessDocument( 
-                            Manager.SharedInstance.GetDatabase(DatabaseName).GetExistingDocument(id));
+                        throw new NotImplementedException("Fetch Document and Call process ProcessDocument");
+                       // Add code here ->
                     }
                 };
         }

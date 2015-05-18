@@ -27,26 +27,13 @@ namespace ToDoLiteXamarinForms.Storage
                 string.IsNullOrWhiteSpace(Username) 
                 ? null
                 : AuthenticatorFactory.CreateBasicAuthenticator(Username, Password);
+
+            pull = null;
+            push = null;
             
-            pull = Manager.SharedInstance.GetDatabase(DatabaseName).CreatePullReplication(RemoteSyncUrl);
-            if(auth != null)
-            {
-                pull.Authenticator = auth;
-            }
-            
-            push = Manager.SharedInstance.GetDatabase(DatabaseName).CreatePushReplication(RemoteSyncUrl);
-            if(auth != null)
-            {
-                push.Authenticator = auth;
-            }
-            
-            pull.Continuous = push.Continuous = true;
-            
-            pull.Changed += ReplicationProgress;
-            push.Changed += ReplicationProgress;
-            
-            pull.Start();
-            push.Start();
+            throw new NotImplementedException("Sync not implemented");
+
+            // add code here ->
         }
 
         private void UninitializeSync()
