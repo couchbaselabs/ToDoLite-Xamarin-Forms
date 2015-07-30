@@ -128,7 +128,6 @@ namespace ToDoLiteXamarinForms.Storage
                     return;
             if (active == null)
                 return;
-            var initiatorName = active.IsPull ? "Pull" : "Push";
 
             lastPushCompleted = push.ChangesCount;
             lastPullCompleted = pull.ChangesCount;

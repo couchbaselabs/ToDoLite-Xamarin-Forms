@@ -7,8 +7,6 @@ namespace ToDoLiteXamarinForms.Models
         
         public string Details { get; set; }
         
-        public string LastUpdated { get; set; }
-     
         public string TodoListId { get; set; }
     }
 }

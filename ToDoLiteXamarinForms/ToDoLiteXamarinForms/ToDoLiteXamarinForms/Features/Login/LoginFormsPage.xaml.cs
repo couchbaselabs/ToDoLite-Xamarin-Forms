@@ -20,7 +20,7 @@ namespace ToDoLiteXamarinForms.Features.Login
         protected override void OnAppearing()
         {
             Authentication auth = new Authentication();
-            var ui = auth.Auth.GetUI();
+            auth.Auth.GetUI();
             base.OnAppearing();
         }
 
