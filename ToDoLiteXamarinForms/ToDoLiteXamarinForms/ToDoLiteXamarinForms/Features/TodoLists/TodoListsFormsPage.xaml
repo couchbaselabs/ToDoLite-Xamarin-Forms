@@ -11,6 +11,11 @@
       Text="Add List"
       Order="Primary"
       Activated="ToolbarButtonActivated" />
+
+    <ToolbarItem
+      Text="Search"
+      Order="Primary"
+      Activated="ToolbarButtonSearchActivated" />
     
   </ContentPage.ToolbarItems>
   

@@ -25,6 +25,11 @@ namespace ToDoLiteXamarinForms.Storage
 				.GetView("query-view")
 				.SetMap((doc, emit) =>
 				{
+					if(!doc.ContainsKey("doc") || !doc.ContainsKey("doctype"))
+					{
+						return;
+					}
+					
 					var item = doc["doc"] as JContainer;
 					
 					if(item == null)
@@ -40,18 +45,17 @@ namespace ToDoLiteXamarinForms.Storage
 
 						foreach (var prop in items)
 						{
-							var v = doc["type"].ToString() + "::" + prop.name;
+							var doctype = doc["doctype"] != null ? doc["doctype"].ToString() : "unknown"; 
+							var v = doctype + "::" + prop.name;
 							emit(prop.value, v);
 						}
 				}
 				, "query1");
 
-			Search ("a", 50, typeof(TodoList));
-
             var query = Manager.SharedInstance.GetDatabase(DatabaseName)
                 .GetView("all-docs")
                 .CreateQuery();
-
+			
             query.Run()
             .ToList()
             .ForEach(row =>
@@ -102,7 +106,8 @@ namespace ToDoLiteXamarinForms.Storage
 
 			var queryResult = 
 				query
-				.Run ();
+				.Run ()
+				.ToList();
 
 			var queryResultFiltered = queryResult;
 			if (type != null) 

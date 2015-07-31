@@ -30,12 +30,20 @@ namespace ToDoLiteXamarinForms.Features.TodoLists
 
         public void OnButtonCountClicked(object sender, EventArgs args)
         {
-            (sender as Button).Text = string.Format("Count# {0}", Manager.SharedInstance.GetDatabase(App.StorageRepository.DatabaseName).DocumentCount);
+            (sender as Button).Text = string.Format(
+				"Count# {0}", 
+				Manager.SharedInstance.GetDatabase(App.StorageRepository.DatabaseName).DocumentCount
+			);
         }
 
         public async void ToolbarButtonActivated(object sender, object args)
         {
             await Navigation.PushAsync(new CreateListFormsPage());
         }
+
+		public async void ToolbarButtonSearchActivated(object sender, object args)
+		{
+			App.StorageRepository.Search ("a", 10, typeof(TodoList));
+		}
 	}
 }
