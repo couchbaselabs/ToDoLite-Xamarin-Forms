@@ -104,6 +104,7 @@
   <Import Project="..\ToDoLiteXamarinForms\ToDoLiteXamarinForms.projitems" Label="Shared" Condition="Exists('..\ToDoLiteXamarinForms\ToDoLiteXamarinForms.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.4.4.6392\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
+  <Import Project="..\..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props" Condition="Exists('..\..\packages\xamstore-xamarin.auth.1.2.2\build\monoandroid\xamstore-xamarin.auth.props')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
      Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
