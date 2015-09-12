@@ -18,44 +18,45 @@ namespace ToDoLiteXamarinForms.Storage
                 .GetView("all-docs")
                 .SetMap((doc, emit) =>
                 {
+                    // Create index on '_id' with reference to the document.
                     emit(doc["_id"], null);
-                },"ver2");
-			
-			Manager.SharedInstance.GetDatabase(DatabaseName)
-				.GetView("query-view")
-				.SetMap((doc, emit) =>
-				{
-					if(!doc.ContainsKey("doc") || !doc.ContainsKey("doctype"))
-					{
-						return;
-					}
-					
-					var item = doc["doc"] as JContainer;
-					
-					if(item == null)
-					{
-						return;
-					}
+                }, "ver2");
 
-					var items =  item
-						.Children()
-						.Where(p => p is JProperty)
-						.Cast<JProperty>()
-						.Select(p => new { name = p.Name, value = p.Value.ToString().ToLower() });
+            Manager.SharedInstance.GetDatabase(DatabaseName)
+                .GetView("query-view")
+                .SetMap((doc, emit) =>
+                {
+                    if (!doc.ContainsKey("doc") || !doc.ContainsKey("doctype"))
+                    {
+                        return;
+                    }
 
-						foreach (var prop in items)
-						{
-							var doctype = doc["doctype"] != null ? doc["doctype"].ToString() : "unknown"; 
-							var v = doctype + "::" + prop.name;
-							emit(prop.value, v);
-						}
-				}
-				, "query1");
+                    var item = doc["doc"] as JContainer;
+
+                    if (item == null)
+                    {
+                        return;
+                    }
+
+                    item.Children()
+                        .Where(p => p is JProperty)
+                        .Cast<JProperty>()
+                        .Select(p => new { name = p.Name, value = p.Value.ToString().ToLower() })
+                        .ToList()
+                        .ForEach(prop =>
+                        {
+
+                            var doctype = doc["doctype"] != null ? doc["doctype"].ToString() : "unknown";
+                            var v = doctype + "::" + prop.name;
+                            emit(prop.value, v);
+                        });
+                }
+                , "query2");
 
             var query = Manager.SharedInstance.GetDatabase(DatabaseName)
                 .GetView("all-docs")
                 .CreateQuery();
-			
+
             query.Run()
             .ToList()
             .ForEach(row =>
@@ -87,43 +88,45 @@ namespace ToDoLiteXamarinForms.Storage
             liveQuery.Start();
         }
 
-		public List<object>  Search(string prefixWord, int limit, Type type)
-		{
-			List<object> list = new List<object> ();
+        public List<object> Search(string prefixWord, int limit, Type type)
+        {
+            List<object> list = new List<object>();
 
-			if (string.IsNullOrWhiteSpace (prefixWord)) {
-				return list;
-			}
+            if (string.IsNullOrWhiteSpace(prefixWord))
+            {
+                return list;
+            }
 
-			var query = Manager.SharedInstance.GetDatabase(DatabaseName)
-				.GetView("query-view")
-				.CreateQuery();
+            var query = Manager.SharedInstance.GetDatabase(DatabaseName)
+                .GetView("query-view")
+                .CreateQuery();
 
-			query.IndexUpdateMode = IndexUpdateMode.Before;
-			query.StartKey = prefixWord.ToLower();
-			query.EndKey = query.StartKey.ToString() + '\uEFFF';
-			query.Limit = limit;
+            query.IndexUpdateMode = IndexUpdateMode.Before;
+            query.StartKey = prefixWord.ToLower();
+            query.EndKey = query.StartKey.ToString() + '\uEFFF';
+            query.Limit = limit;
 
-			var queryResult = 
-				query
-				.Run ()
-				.ToList();
+            var queryResult =
+                query
+                .Run()
+                .ToList();
 
-			var queryResultFiltered = queryResult;
-			if (type != null) 
-			{
-				var filter = string.Format("{0}::", type.Name);
-				queryResultFiltered
-					.Where (item => item.Value.ToString ().StartsWith (filter));
-			}
+            var queryResultFiltered = queryResult;
+            if (type != null)
+            {
+                var filter = string.Format("{0}::", type.Name);
+                queryResultFiltered
+                    .Where(item => item.Value.ToString().StartsWith(filter));
+            }
 
-			foreach (var item in queryResultFiltered) {
-				var doc = (item.Document.UserProperties["doc"]);// as JContainer).ToObject<type>();
-				list.Add (doc);
-			}
+            foreach (var item in queryResultFiltered)
+            {
+                var doc = (item.Document.UserProperties["doc"]);// as JContainer).ToObject<type>();
+                list.Add(doc);
+            }
 
-			return list;
-		} 
+            return list;
+        }
 
         private void ProcessDocument(Document doc)
         {

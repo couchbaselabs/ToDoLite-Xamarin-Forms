@@ -21,6 +21,8 @@ namespace ToDoLiteXamarinForms.Features.TodoLists
 
         async void OnItemTapped(object sender, ItemTappedEventArgs e)
         {
+            App.StorageRepository.Search("item", 10, typeof(TodoList));
+
             if (e == null) return; // has been set to null, do not 'process' tapped event
             
             ((ListView)sender).SelectedItem = null; // de-select the row

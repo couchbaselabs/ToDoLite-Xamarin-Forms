@@ -14,8 +14,8 @@ namespace ToDoLiteXamarinForms.Storage
         {
             if (string.IsNullOrWhiteSpace(item.Id))
             {
-                item.DocType = typeof(T).Name.ToLower();
-                item.Id = item.DocType + "::" + Guid.NewGuid();
+                item.Type = typeof(T).Name.ToLower();
+                item.Id = item.Type + "::" + Guid.NewGuid();
             }
 
             item.LastUpdated = DateTime.Now.Ticks.ToString();
@@ -34,7 +34,7 @@ namespace ToDoLiteXamarinForms.Storage
 
             updatedProperties["id"] = item.Id;
             updatedProperties["lastupdated"] = item.LastUpdated;
-            updatedProperties["doctype"] = item.DocType;
+            updatedProperties["doctype"] = item.Type;
             updatedProperties["doc"] = item;
 
             document.PutProperties(updatedProperties);

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ToDoLiteXamarinForms.ViewModels
 {
@@ -13,5 +14,7 @@ namespace ToDoLiteXamarinForms.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs(name));
             }
         }
+
+       
     }
 }

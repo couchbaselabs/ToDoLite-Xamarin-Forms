@@ -8,7 +8,7 @@ namespace ToDoLiteXamarinForms.Storage
     public partial class StorageRepository
     {
         // TODO : Use demo Sync Gateway URL with default credentials.
-        public readonly Uri RemoteSyncUrl = new Uri("http://cbdemo004bizz.cloudapp.net:4984/sync_gateway/");
+        public readonly Uri RemoteSyncUrl = new Uri(Config.Instance.SyncGatewayUri);
 
         private Replication pull;
         private Replication push;

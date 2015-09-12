@@ -34,8 +34,6 @@ namespace ToDoLiteXamarinForms.Storage
             ResetDatabase();
             InitializeDatabase();
             InitializeQuery();
-
-            //InitializeSync();
         }
 
         void ConflictItems_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
