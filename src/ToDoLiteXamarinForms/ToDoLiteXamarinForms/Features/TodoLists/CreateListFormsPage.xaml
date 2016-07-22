@@ -22,7 +22,7 @@
     
     <Entry 
       x:Name="entryTitle" 
-      Placeholder="Titel" />
+      Placeholder="Title" />
     
     <Entry 
       x:Name="entryDetails" 
