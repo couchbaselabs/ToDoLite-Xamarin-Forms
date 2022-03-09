@@ -1,3 +1,5 @@
+⚠️ This repo is obsolete.  It is based on a version of Couchbase Lite that reached end of life years ago.
+
 ## ToDoLite-Xamarin-Forms
 This is a demo app showing how to use the [Couchbase Lite][CBL] framework to embed a nonrelational ("NoSQL") document-oriented database in an Xamarin Forms app and sync it with [Couchbase Server][CBS] in "the cloud".
 
